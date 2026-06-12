@@ -127,8 +127,8 @@ O projeto foi desenvolvido com o objetivo de praticar:
 
 # Autores
 
-Eduardo Santana Cruz Almeida
-Erik Antonio Rodrigues Pires
-Lucas Marques Oliveira
-Pedro Augusto Ribeiro Ferreira
-Rubio Filho Almeida da Silva
+Eduardo Santana Cruz Almeida, 
+Erik Antonio Rodrigues Pires, 
+Lucas Marques Oliveira, 
+Pedro Augusto Ribeiro Ferreira, 
+Rubio Filho Almeida da Silva.
