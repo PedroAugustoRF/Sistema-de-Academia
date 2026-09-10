@@ -151,9 +151,7 @@ public class App {
 
 			try {
 				aniversario = LocalDate.parse(sc.nextLine(), FORMATO_DATA);
-			}
-
-			catch (DateTimeParseException e) {
+			} catch (DateTimeParseException e) {
 				System.out.println("  Data invalida.");
 			}
 		}
