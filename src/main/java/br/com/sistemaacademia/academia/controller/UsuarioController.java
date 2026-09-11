@@ -61,8 +61,4 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/")
-    public String helloWorld() {
-        return "Hello World!";
-    }
 }
