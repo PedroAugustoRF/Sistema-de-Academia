@@ -1,12 +1,12 @@
 export default class Treino {
     #id;
-    #aluno;
+    #usuario;
     #diaSemana;
     #exercicios;
 
-    constructor(id, aluno, diaSemana, exercicios) {
+    constructor(id, usuario, diaSemana, exercicios) {
         this.#id = id;
-        this.aluno = aluno;
+        this.usuario = usuario;
         this.diaSemana = diaSemana;
         this.exercicios = exercicios;
     }
@@ -15,11 +15,11 @@ export default class Treino {
         return this.#id;
     }
 
-    get aluno() {
-        return this.#aluno;
+    get usuario() {
+        return this.#usuario;
     }
-    set aluno(valor) {
-        this.#aluno = valor;
+    set usuario(valor) {
+        this.#usuario = valor;
     }
 
     get diaSemana() {
@@ -39,7 +39,7 @@ export default class Treino {
     toJSON() {
         return {
             id: this.#id,
-            aluno: this.#aluno,
+            usuario: this.#usuario,
             diaSemana: this.#diaSemana,
             exercicios: this.#exercicios
         };

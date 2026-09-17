@@ -3,7 +3,7 @@ import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import alunosRoutes from "../routes/alunos.js";
+import usuariosRoutes from "../routes/usuarios.js";
 import treinosRoutes from "../routes/treinos.js";
 import exerciciosRoutes from "../routes/exercicios.js";
 import maquinasRoutes from "../routes/maquinas.js";
@@ -19,7 +19,7 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, "../public")));
 
-app.use("/alunos", alunosRoutes);
+app.use("/usuarios", usuariosRoutes);
 app.use("/treinos", treinosRoutes);
 app.use("/exercicios", exerciciosRoutes);
 app.use("/maquinas", maquinasRoutes);

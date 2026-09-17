@@ -2,7 +2,7 @@ import express from "express";
 import {
   getAllTreinos,
   getTreinoById,
-  getTreinosByAluno,
+  getTreinosByUsuario,
   createTreino,
   updateTreino,
   deleteTreino
@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/", getAllTreinos);
 router.get("/:id", getTreinoById);
-router.get("/aluno/:alunoId", getTreinosByAluno);
+router.get("/usuario/:usuarioId", getTreinosByUsuario);
 router.post("/", createTreino);
 router.put("/:id", updateTreino);
 router.delete("/:id", deleteTreino);

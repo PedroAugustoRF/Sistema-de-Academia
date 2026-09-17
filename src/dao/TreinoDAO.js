@@ -1,23 +1,23 @@
 import connection from "../database/Connection.js";
 import Treino from "../models/entities/Treino.js";
-import AlunosDAO from "./AlunosDAO.js";
+import UsuariosDAO from "./UsuariosDAO.js";
 import ExerciciosDAO from "./ExerciciosDAO.js";
 
 export default class TreinoDAO {
-    #alunosDAO = new AlunosDAO();
+    #usuariosDAO = new UsuariosDAO();
     #exerciciosDAO = new ExerciciosDAO();
 
     async #toTreino(row) {
         if (!row) return null;
-        const aluno = await this.#alunosDAO.findById(row.alunoid);
+        const usuario = await this.#usuariosDAO.findById(row.usuarioid);
         const exercicios = await this.#exerciciosDAO.findByTreinoId(row.id);
-        return new Treino(row.id, aluno, row.diaSemana, exercicios);
+        return new Treino(row.id, usuario, row.diaSemana, exercicios);
     }
 
     async insert(treino) {
-        const sql = `INSERT INTO treinos (alunoid, diaSemana)
+        const sql = `INSERT INTO treinos (usuarioid, diaSemana)
                      VALUES (?, ?)`;
-        const parametros = [treino.alunoid, treino.diaSemana];
+        const parametros = [treino.usuarioid, treino.diaSemana];
 
         const [result] = await connection.execute(sql, parametros);
         return result.insertId;
@@ -25,9 +25,9 @@ export default class TreinoDAO {
 
     async update(treino) {
         const sql = `UPDATE treinos
-                     SET alunoid = ?, diaSemana = ?
+                     SET usuarioid = ?, diaSemana = ?
                      WHERE id = ?`;
-        const parametros = [treino.alunoid, treino.diaSemana, treino.id];
+        const parametros = [treino.usuarioid, treino.diaSemana, treino.id];
 
         const [result] = await connection.execute(sql, parametros);
         return result.affectedRows > 0;
@@ -54,10 +54,10 @@ export default class TreinoDAO {
         return Promise.all(rows.map(row => this.#toTreino(row)));
     }
 
-    async findByAlunoId(alunoId) {
-        const sql = `SELECT * FROM treinos WHERE alunoid = ?`;
+    async findByUsuarioId(usuarioId) {
+        const sql = `SELECT * FROM treinos WHERE usuarioid = ?`;
 
-        const [rows] = await connection.execute(sql, [alunoId]);
+        const [rows] = await connection.execute(sql, [usuarioId]);
         return Promise.all(rows.map(row => this.#toTreino(row)));
     }
 }

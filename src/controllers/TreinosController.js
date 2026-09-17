@@ -12,8 +12,8 @@ export async function getTreinoById(req, res) {
   treino ? res.json(treino) : res.status(404).send("Treino não encontrado");
 }
 
-export async function getTreinosByAluno(req, res) {
-  const treinos = await treinoDAO.findByAlunoId(req.params.alunoId);
+export async function getTreinosByUsuario(req, res) {
+  const treinos = await treinoDAO.findByUsuarioId(req.params.usuarioId);
   res.json(treinos);
 }
 
