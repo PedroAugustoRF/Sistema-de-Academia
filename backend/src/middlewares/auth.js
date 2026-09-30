@@ -3,7 +3,6 @@ import UsuariosDAO from "../dao/UsuariosDAO.js";
 
 const usuariosDAO = new UsuariosDAO();
 
-// Em produção, isso deve vir de uma variável de ambiente (.env), nunca hardcoded.
 export const JWT_SECRET = process.env.JWT_SECRET || "chave-secreta-trabalho-faculdade";
 
 export const CARGOS = ["administrador", "professor", "aluno"];
@@ -25,10 +24,6 @@ export function autenticar(req, res, next) {
     }
 }
 
-/**
- * Libera a rota apenas para os cargos informados.
- * Uso: router.post("/", autenticar, autorizarCargos("administrador", "professor"), handler)
- */
 export function autorizarCargos(...cargos) {
     return (req, res, next) => {
         const cargo = req.usuarioLogado?.cargo;
@@ -46,7 +41,7 @@ const HIERARQUIA = {
     aluno: []
 };
 
-/** Cargos que um usuário logado pode gerenciar (editar/excluir). */
+// Cargos que um usuário logado pode gerenciar (editar/excluir). 
 export function podeGerenciar(cargoDoLogado, cargoAlvo) {
     return Boolean(HIERARQUIA[cargoDoLogado]?.includes(cargoAlvo));
 }
