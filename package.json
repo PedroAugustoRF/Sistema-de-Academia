@@ -1,24 +1,20 @@
 {
-  "name": "academia",
+  "name": "gymcontrol",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "private": true,
+  "description": "GymControl — frontend estático e API REST Express/MySQL",
+  "workspaces": [
+    "backend"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/application/app.js"
+    "dev": "nodemon --watch backend/src --watch backend/.env backend/src/application/server.js",
+    "start": "node backend/src/application/server.js",
+    "test": "node --test backend/test/app.test.js",
+    "check": "node backend/scripts/check-syntax.js",
+    "check:db": "node backend/scripts/check-database.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.24.2"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.14"
+  "engines": {
+    "node": ">=20.6.0",
+    "npm": ">=9.0.0"
   }
 }
